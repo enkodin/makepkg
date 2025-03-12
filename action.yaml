@@ -1,0 +1,14 @@
+name: "ArchLinux (makepkg)"
+description: "ArchLinux (makepkg)"
+author: shyaminayesh
+branding:
+  color: blue
+  icon: box
+runs:
+  using: "docker"
+  image: "docker://ghcr.io/enkodin/makepkg:latest"
+inputs:
+  command:
+    description: "makepkg command to execute"
+    required: true
+    default: "--printsrc"

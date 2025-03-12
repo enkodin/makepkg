@@ -2,10 +2,19 @@
 
 echo ${INPUT_FILES} | jq --raw-output '.[]' | while read pkg; do
 
-    ls -all /opt
-    cd /opt
-    pwd
-    echo ${INPUT_SRC}
+    chown -R user:user ${pkg:0:-9}
+
+    if [ ${INPUT_SRC} ]; then
+        cd ${pkg:0:-9}
+        runuser -u user -- makepkg --printsrc
+    fi
+
+    if [ ${INPUT_PUBLISH} ]; then
+        mkdir /opt/${pkg:0:-9}
+        cp ${pkg:0:-9}/* /opt/${pkg:0:-9}
+        cd /opt/${pkg:0:-9}
+        ls -all
+    fi
 
     # chown -R user:user ${pkg:0:-9}
     # cd ${pkg:0:-9}

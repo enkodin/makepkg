@@ -3,6 +3,7 @@
 echo ${INPUT_FILES} | jq --raw-output '.[]' | while read pkg; do
 
     echo ${pwd}
+    echo ${INPUT_SRC}
 
     # chown -R user:user ${pkg:0:-9}
     # cd ${pkg:0:-9}

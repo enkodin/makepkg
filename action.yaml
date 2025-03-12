@@ -8,10 +8,14 @@ runs:
   using: "docker"
   image: "docker://ghcr.io/enkodin/makepkg:latest"
 inputs:
-  command:
-    description: "makepkg command to execute"
+  src:
+    description: "generate makepkg printsrc or not"
     required: true
-    default: "--printsrc"
+    default: true
+  publish:
+    description: "publish package to aur"
+    required: true
+    default: false
   files:
     description: "PKGBUILDs got changed or added"
     required: true

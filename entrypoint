@@ -10,10 +10,11 @@ echo ${INPUT_FILES} | jq --raw-output '.[]' | while read pkg; do
     fi
 
     if [ ${INPUT_PUBLISH} ]; then
-        mkdir /opt/${pkg:0:-9}
-        cp ${pkg:0:-9}/* /opt/${pkg:0:-9}
-        cd /opt/${pkg:0:-9}
+        mkdir ${pkg:0:-9}-builder
+        cp -r ${pkg:0:-9}/* ${pkg:0:-9}-builder
+        cd ${pkg:0:-9}-builder
         ls -all
+        pwd
     fi
 
     # chown -R user:user ${pkg:0:-9}

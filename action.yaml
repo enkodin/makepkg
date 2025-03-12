@@ -12,3 +12,6 @@ inputs:
     description: "makepkg command to execute"
     required: true
     default: "--printsrc"
+  files:
+    description: "PKGBUILDs got changed or added"
+    required: true
